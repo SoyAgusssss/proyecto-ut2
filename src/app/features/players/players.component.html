@@ -1,0 +1,54 @@
+ <!-- Jugadores -->
+  <section id="jugadores" class="container my-5">
+    <h2 class="mb-4"><i class="bi bi-person"></i> Jugadores</h2>
+    <form class="mb-3">
+      <div class="input-group">
+        <input type="search" class="form-control" id="buscadorJugadores" placeholder="Buscar jugador por nombre...">
+        <button class="btn btn-secondary btn-animado" type="button" id="btnBuscarJugador"><i class="bi bi-search"></i></button>
+      </div>
+    </form>
+    <div class="row g-4" id="listadoJugadores">
+      <div class="col-md-4 jugador-card">
+        <div class="card shadow-sm animate__animated animate__fadeIn">
+          <div class="card-body">
+            <h5 class="card-title">Ana Torres</h5>
+            <span class="badge bg-primary mb-1">Fútbol</span>
+            <p>Delantera | 7 goles</p>
+            <button class="btn btn-outline-primary btn-sm btn-animado" data-bs-toggle="modal" data-bs-target="#modalJugador1">Ver ficha</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 jugador-card">
+        <div class="card shadow-sm animate__animated animate__fadeIn">
+          <div class="card-body">
+            <h5 class="card-title">Mario Mera</h5>
+            <span class="badge bg-primary mb-1">Baloncesto</span>
+            <p>Base | 18 ptos</p>
+            <button class="btn btn-outline-warning btn-sm btn-animado" data-bs-toggle="modal" data-bs-target="#modalJugador2">Ver ficha</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 jugador-card">
+        <div class="card shadow-sm animate__animated animate__fadeIn">
+          <div class="card-body">
+            <h5 class="card-title">Paco Pozo</h5>
+            <span class="badge bg-primary mb-1">Tenis</span>
+            <p>Derecho | 3 partidos ganados</p>
+            <button class="btn btn-outline-warning btn-sm btn-animado" data-bs-toggle="modal" data-bs-target="#modalJugador3">Ver ficha</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 jugador-card">
+        <div class="card shadow-sm animate__animated animate__fadeIn">
+          <div class="card-body">
+            <h5 class="card-title">Pedro Picapiedra</h5>
+            <span class="badge bg-primary mb-1">Voleibol</span>
+            <p>Defensa | 4 partidos ganados</p>
+            <button class="btn btn-outline-warning btn-sm btn-animado" data-bs-toggle="modal" data-bs-target="#modalJugador4">Ver ficha</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-modal-players></app-modal-players>

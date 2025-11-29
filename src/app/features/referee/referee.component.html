@@ -1,0 +1,35 @@
+  <!-- Árbitros -->
+  <section id="arbitros" class="container my-5">
+    <h2 class="mb-4"><i class="bi bi-person-badge"></i> Árbitros</h2>
+    <form class="mb-3">
+      <div class="input-group">
+        <input type="search" class="form-control" id="buscadorArbitros" placeholder="Buscar árbitro...">
+        <button class="btn btn-secondary btn-animado" type="button"><i class="bi bi-search"></i></button>
+      </div>
+    </form>
+    <div class="row g-4" id="listadoArbitros">
+      <div class="col-md-4 arbitro-card">
+        <div class="card shadow-sm animate__animated animate__fadeIn">
+          <div class="card-body">
+            <h5 class="card-title">Leo Messi</h5>
+            <span class="badge bg-success mb-1">Fútbol</span>
+            <p>Experiencia: 3 años</p>
+            <button class="btn btn-outline-success btn-sm btn-animado" data-bs-toggle="modal" data-bs-target="#modalArbitro1">Ver ficha</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 arbitro-card">
+        <div class="card shadow-sm animate__animated animate__fadeIn">
+          <div class="card-body">
+            <h5 class="card-title">Paul Gasol</h5>
+            <span class="badge bg-success mb-1">Baloncesto</span>
+            <p>Partidos arbitrados: 12</p>
+            <button class="btn btn-outline-success btn-sm btn-animado" data-bs-toggle="modal" data-bs-target="#modalArbitro2">Ver ficha</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <app-modal-referee></app-modal-referee>
