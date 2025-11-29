@@ -24,6 +24,10 @@ import { ConfirmContactComponent } from './features/contact/confirm-contact/conf
 import { RegistrationsComponent } from './features/registrations/registrations.component';
 import { ModalResgistrationComponent } from './features/registrations/modal-resgistration/modal-resgistration.component';
 import { ConfirmRegistrationComponent } from './features/registrations/confirm-registration/confirm-registration.component';
+import { LoginComponent } from './features/login/login.component';
+import { RegisterComponent } from './features/register/register.component';
+import { AdminComponent } from './features/admin/admin.component';
+import { MatchesComponent } from './features/matches/matches.component';
 
 
 @NgModule({
@@ -42,7 +46,7 @@ import { ConfirmRegistrationComponent } from './features/registrations/confirm-r
     ModalTeamsComponent,
     ModalPlayersComponent,
     ModalRefereeComponent,
-    BannerPrincipalComponent, NoticeComponent, ConfirmContactComponent, RegistrationsComponent, ModalResgistrationComponent, ConfirmRegistrationComponent
+    BannerPrincipalComponent, NoticeComponent, ConfirmContactComponent, RegistrationsComponent, ModalResgistrationComponent, ConfirmRegistrationComponent, LoginComponent, RegisterComponent, AdminComponent, MatchesComponent
   ],
   imports: [
     BrowserModule,
