@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -9,10 +10,12 @@ import { ResultsComponent } from './features/results/results.component';
 import { ClasificationsComponent } from './features/clasifications/clasifications.component';
 import { RefereeComponent } from './features/referee/referee.component';
 import { ContactComponent } from './features/contact/contact.component';
-
+import { LoginComponent } from './features/login/login.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },  // ruta principal
+  { path: '', redirectTo: 'login', pathMatch: 'full' }, // al abrir la app → login
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'news', component: NewsComponent },
   { path: 'teams', component: TeamsComponent },
   { path: 'players', component: PlayersComponent },

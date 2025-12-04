@@ -29,6 +29,7 @@ import { RegisterComponent } from './features/register/register.component';
 import { AdminComponent } from './features/admin/admin.component';
 import { MatchesComponent } from './features/matches/matches.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -53,7 +54,7 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, SharedModule, FormsModule
+    AppRoutingModule, SharedModule, FormsModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

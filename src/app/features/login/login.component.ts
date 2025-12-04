@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,33 +10,39 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent {
 
-  username = '';
-  password = '';
+  usuario: string = '';
+  password: string = '';
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
-  login() {
-    if (!this.username || !this.password) return;
+  login(form: NgForm) {
+    if (!form.valid) {
+      alert('Por favor completa todos los campos.');
+      return;
+    }
 
-    this.authService.login(this.username, this.password).subscribe({
-      next: (res) => {
-        if (res.success) {
-          switch(res.role) {
-            case 'usuario': this.router.navigate(['/index_usuario']); break;
-            case 'administrador': this.router.navigate(['/index_administrador']); break;
-            case 'capitan': this.router.navigate(['/index_capitan']); break;
-            case 'arbitro': this.router.navigate(['/index_arbitro']); break;
-          }
-        } else {
-          alert(res.message || 'Usuario o contraseña incorrectos');
+    const data = {
+  usuario: this.usuario,
+  password: this.password
+};
+
+    this.http.post('http://localhost:3000/api/usuarios/login', data)
+      .subscribe({
+        next: (res: any) => {
+          console.log('Login correcto:', res);
+          alert(`Bienvenido ${res.usuario.usuario}`);
+          this.router.navigate(['/home']); // redirige a home
+        },
+        error: (err) => {
+          console.error('Error login:', err);
+          alert(err.error?.mensaje || 'Error en login');
         }
-      },
-      error: (err) => {
-        console.error(err);
-        alert('Error de conexión con el servidor');
-      }
-    });
+      });
   }
 }
+
+
+
+
 
 
