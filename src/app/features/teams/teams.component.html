@@ -5,7 +5,7 @@
   <!-- Filtro y búsqueda -->
   <form class="row gx-2 gy-2 mb-3">
     <div class="col-md-4">
-      <select class="form-select" id="filtradoEquipos">
+      <select class="form-select" id="filtradoEquipos" #filtradoEquipos>
         <option selected value="todos">Todas las competiciones</option>
         <option value="futbol">Fútbol</option>
         <option value="baloncesto">Baloncesto</option>
@@ -14,12 +14,12 @@
       </select>
     </div>
     <div class="col">
-      <input type="search" class="form-control" placeholder="Buscar equipo por nombre..." id="busquedaEquipo">
+      <input type="search" class="form-control" placeholder="Buscar equipo por nombre..." id="busquedaEquipo" #busquedaEquipo>
     </div>
   </form>
 
   <!-- Tarjetas de equipos -->
-  <div id="listadoEquipos" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+  <div id="listadoEquipos" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" #listadoEquipos>
     <!-- Equipo 1 -->
     <div class="col equipo-card" data-competicion="futbol">
       <div class="card h-100 animate__animated animate__fadeInLeft">

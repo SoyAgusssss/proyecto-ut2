@@ -28,6 +28,7 @@ import { LoginComponent } from './features/login/login.component';
 import { RegisterComponent } from './features/register/register.component';
 import { AdminComponent } from './features/admin/admin.component';
 import { MatchesComponent } from './features/matches/matches.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { MatchesComponent } from './features/matches/matches.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, SharedModule
+    AppRoutingModule, SharedModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

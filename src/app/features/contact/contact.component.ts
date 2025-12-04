@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('contactoForm') contactoForm!: ElementRef<HTMLFormElement>;
+  @ViewChild('toastContacto') toastContacto!: ElementRef;
 
-  ngOnInit(): void {
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  onSubmit() {
+    // @ts-ignore (Bootstrap no tiene tipos)
+    const toast = new bootstrap.Toast(this.toastContacto.nativeElement);
+    toast.show();
+
+    this.contactoForm.nativeElement.reset();
   }
-
 }
+
