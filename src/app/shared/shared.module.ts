@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
-
-
 
 @NgModule({
   declarations: [
@@ -11,11 +10,13 @@ import { FooterComponent } from './components/footer/footer.component';
     FooterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule 
   ],
-   exports: [
+  exports: [
     MenuComponent,
     FooterComponent
   ]
 })
 export class SharedModule { }
+

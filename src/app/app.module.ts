@@ -47,7 +47,9 @@ import { FormsModule } from '@angular/forms';
     ModalTeamsComponent,
     ModalPlayersComponent,
     ModalRefereeComponent,
-    BannerPrincipalComponent, NoticeComponent, ConfirmContactComponent, RegistrationsComponent, ModalResgistrationComponent, ConfirmRegistrationComponent, LoginComponent, RegisterComponent, AdminComponent, MatchesComponent
+    BannerPrincipalComponent, NoticeComponent, ConfirmContactComponent, 
+    RegistrationsComponent, ModalResgistrationComponent, ConfirmRegistrationComponent, 
+    LoginComponent, RegisterComponent, AdminComponent, MatchesComponent
   ],
   imports: [
     BrowserModule,
