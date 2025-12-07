@@ -1,44 +1,47 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
-  <div class="container-fluid justify-content-center">
+  <div class="container-fluid d-flex justify-content-between align-items-center">
 
-    <!-- Logo -->
-    <a class="navbar-brand d-flex align-items-center me-3" href="#">
-      <img src="assets/img/logo/logo-maestre-calatrava.png"
-           alt="Logo IES Maestre de Calatrava" style="height:40px;">
-    </a>
+    <!-- Logo + menú -->
+    <div class="d-flex align-items-center">
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center me-3" href="#">
+        <img src="assets/img/logo/logo-maestre-calatrava.png"
+             alt="Logo IES Maestre de Calatrava" style="height:40px;">
+      </a>
 
-    <!-- Botón responsive -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#mainNavbar" aria-controls="mainNavbar"
-            aria-expanded="false" aria-label="Menu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Menú -->
-    <div class="collapse navbar-collapse justify-content-center" id="mainNavbar">
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href="#equipos">Equipos</a></li>
-        <li class="nav-item"><a class="nav-link" href="#resultados">Resultados</a></li>
-        <li class="nav-item"><a class="nav-link" href="#clasificaciones">Clasificaciones</a></li>
-        <li class="nav-item"><a class="nav-link" href="#jugadores">Jugadores</a></li>
-        <li class="nav-item"><a class="nav-link" href="#arbitros">Árbitros</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-      </ul>
-
-      <!-- Botón inscripción y redes -->
-      <div class="d-flex align-items-center ms-3">
-        <button class="btn btn-warning btn-sm btn-animado me-3"
-                data-bs-toggle="modal" data-bs-target="#inscripcionModal">
-          <i class="bi bi-pencil-square"></i> Inscribir equipo/jugador
-        </button>
-
-        <a href="#" class="text-white fs-5 me-2"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
+      <!-- Menú -->
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#equipos">Equipos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resultados">Resultados</a></li>
+          <li class="nav-item"><a class="nav-link" href="#clasificaciones">Clasificaciones</a></li>
+          <li class="nav-item"><a class="nav-link" href="#jugadores">Jugadores</a></li>
+          <li class="nav-item"><a class="nav-link" href="#arbitros">Árbitros</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
       </div>
     </div>
+
+    <!-- Botones y redes a la derecha -->
+    <div class="d-flex align-items-center">
+      <button class="btn btn-warning btn-sm btn-animado me-3"
+              data-bs-toggle="modal" data-bs-target="#inscripcionModal">
+        <i class="bi bi-pencil-square"></i> Inscribir equipo/jugador
+      </button>
+
+      <a class="btn btn-outline-light btn-sm me-3" routerLink="/login">
+        <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+      </a>
+
+      <a href="#" class="text-white fs-5 me-2"><i class="bi bi-instagram"></i></a>
+      <a href="#" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
+    </div>
+
   </div>
 </nav>
+
+
 
 
 <!-- MODAL INSCRIPCIÓN -->

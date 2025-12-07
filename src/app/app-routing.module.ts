@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -13,7 +12,7 @@ import { ContactComponent } from './features/contact/contact.component';
 import { LoginComponent } from './features/login/login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' }, // al abrir la app → login
+  { path: '', redirectTo: 'login', pathMatch: 'full' },  // redirige la raíz a login
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'news', component: NewsComponent },
@@ -30,3 +29,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
