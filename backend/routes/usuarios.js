@@ -1,4 +1,3 @@
-// backend/routes/usuarios.js
 const express = require('express');
 const router = express.Router();
 const Usuario = require('../models/usuario');
@@ -11,22 +10,19 @@ router.get('/test', (req, res) => {
 // Registro de usuario
 router.post('/register', async (req, res) => {
   try {
-    console.log('Datos recibidos:', req.body);
     const { usuario, password, email, rol } = req.body;
 
-    // Validación básica
     if (!usuario || !password || !email) {
       return res.status(400).json({ mensaje: "Faltan datos obligatorios" });
     }
 
-    // Crear el usuario
-    const nuevoUsuario = new Usuario({
-      usuario,
-      password,
-      email,
-      rol: rol || "usuario"  // default si no envían rol
-    });
+    // Verificar si el usuario o email ya existe
+    const exist = await Usuario.findOne({ $or: [{ usuario }, { email }] });
+    if (exist) {
+      return res.status(400).json({ mensaje: "Usuario o email ya existe" });
+    }
 
+    const nuevoUsuario = new Usuario({ usuario, password, email, rol: rol || "usuario" });
     await nuevoUsuario.save();
 
     res.status(201).json({
@@ -36,12 +32,6 @@ router.post('/register', async (req, res) => {
 
   } catch (error) {
     console.error(error);
-
-    // Manejo de error de email duplicado
-    if (error.code === 11000) {
-      return res.status(400).json({ mensaje: "El email ya está registrado" });
-    }
-
     res.status(500).json({ mensaje: "Error en el servidor" });
   }
 });
@@ -55,19 +45,15 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ mensaje: "Faltan usuario o contraseña" });
     }
 
-    // Buscar usuario
     const user = await Usuario.findOne({ usuario });
-
     if (!user) {
       return res.status(404).json({ mensaje: "Usuario no encontrado" });
     }
 
-    // Comprobar password (por ahora simple)
     if (user.password !== password) {
       return res.status(401).json({ mensaje: "Contraseña incorrecta" });
     }
 
-    // Respuesta correcta
     res.json({
       mensaje: "Login correcto",
       usuario: user
@@ -80,6 +66,7 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
+
 
 
 

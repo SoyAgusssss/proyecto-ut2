@@ -1,4 +1,3 @@
-// index.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -11,8 +10,9 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-const usuariosRouter = require('./routes/usuarios');
-app.use('/api/usuarios', usuariosRouter);
+// Rutas de autenticación
+const authRouter = require('./routes/usuarios');
+app.use('/api/auth', authRouter); // rutas de Angular: /register y /login
 
 // Conexión a MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -26,3 +26,4 @@ app.get('/', (req, res) => {
 
 // Levantar servidor
 app.listen(PORT, () => console.log(`Servidor escuchando en http://localhost:${PORT}`));
+

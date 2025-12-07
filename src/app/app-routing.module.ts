@@ -10,6 +10,8 @@ import { ClasificationsComponent } from './features/clasifications/clasification
 import { RefereeComponent } from './features/referee/referee.component';
 import { ContactComponent } from './features/contact/contact.component';
 import { LoginComponent } from './features/login/login.component';
+import { RegisterComponent } from './features/register/register.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },  // redirige la raíz a login
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'classifications', component: ClasificationsComponent },
   { path: 'referees', component: RefereeComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'register', component: RegisterComponent },
+
 ];
 
 @NgModule({

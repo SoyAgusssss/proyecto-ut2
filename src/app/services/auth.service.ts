@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 interface LoginResponse {
-  success: boolean;
-  role?: 'usuario' | 'administrador' | 'capitan' | 'arbitro';
+  success?: boolean;
+  usuario?: any;
   message?: string;
 }
 
@@ -13,11 +13,17 @@ interface LoginResponse {
 })
 export class AuthService {
 
-  private apiUrl = 'http://localhost:3000/api/auth'; // Cambiar según tu backend
+  private apiUrl = 'http://localhost:3000/api/auth';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, { username, password });
+  login(usuario: string, password: string): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, { usuario, password });
+  }
+
+  registrar(usuario: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/register`, usuario);
   }
 }
+
+

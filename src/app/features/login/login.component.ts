@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ export class LoginComponent {
   usuario: string = '';
   password: string = '';
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   login(form: NgForm) {
     if (!form.valid) {
@@ -21,25 +21,21 @@ export class LoginComponent {
       return;
     }
 
-    const data = {
-  usuario: this.usuario,
-  password: this.password
-};
-
-    this.http.post('http://localhost:3000/api/usuarios/login', data)
+    this.authService.login(this.usuario, this.password)
       .subscribe({
         next: (res: any) => {
           console.log('Login correcto:', res);
           alert(`Bienvenido ${res.usuario.usuario}`);
-          this.router.navigate(['/home']); // redirige a home
+          this.router.navigate(['/home']);
         },
-        error: (err) => {
+        error: (err: any) => {
           console.error('Error login:', err);
           alert(err.error?.mensaje || 'Error en login');
         }
       });
   }
 }
+
 
 
 
