@@ -38,6 +38,16 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.get('/', async (req, res) => {
+  try {
+    const usuarios = await Usuario.find();
+    res.json(usuarios);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ mensaje: "Error obteniendo usuarios" });
+  }
+});
+
 module.exports = router;
 
 
