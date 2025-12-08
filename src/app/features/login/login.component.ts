@@ -9,32 +9,44 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  usuario = '';
+  password = '';
+  cargando = false;
 
-  usuario: string = '';
-  password: string = '';
-
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   login(form: NgForm) {
-    if (!form.valid) {
-      alert('Por favor completa todos los campos.');
-      return;
-    }
+    if (!form.valid) return alert('Completa todos los campos');
+    this.cargando = true;
 
     this.authService.login(this.usuario, this.password)
       .subscribe({
         next: (res: any) => {
-          console.log('Login correcto:', res);
-          alert(`Bienvenido ${res.usuario.usuario}`);
-          this.router.navigate(['/home']);
+          this.cargando = false;
+          if (!res.usuario) return alert('Usuario no encontrado');
+
+          // Guardar en localStorage
+          localStorage.setItem('usuarioActual', JSON.stringify(res.usuario));
+
+          // Redirección según rol
+          switch (res.usuario.rol) {
+            case 'admin': this.router.navigate(['/home']); break;
+            case 'capitan':
+            case 'arbitro':
+            case 'usuario':
+            default: this.router.navigate(['/results']); break;
+          }
         },
         error: (err: any) => {
-          console.error('Error login:', err);
-          alert(err.error?.mensaje || 'Error en login');
+          this.cargando = false;
+          alert(err.error?.mensaje || 'Error login');
         }
       });
   }
 }
+
+
+
 
 
 

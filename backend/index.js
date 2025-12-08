@@ -10,20 +10,17 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Rutas de autenticación
-const authRouter = require('./routes/usuarios');
-app.use('/api/auth', authRouter); // rutas de Angular: /register y /login
+// Rutas
+app.use('/api/auth', require('./routes/usuarios'));
+app.use('/api/matches', require('./routes/matchs'));
 
-// Conexión a MongoDB
+// MongoDB
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('Conectado a MongoDB Atlas'))
-  .catch(err => console.error('Error al conectar a MongoDB:', err));
+  .then(() => console.log('MongoDB conectado'))
+  .catch(err => console.error('Error MongoDB:', err));
 
-// Ruta de prueba
-app.get('/', (req, res) => {
-  res.send('Servidor backend funcionando');
-});
+app.get('/', (req, res) => res.send('Servidor backend funcionando'));
 
-// Levantar servidor
 app.listen(PORT, () => console.log(`Servidor escuchando en http://localhost:${PORT}`));
+
 

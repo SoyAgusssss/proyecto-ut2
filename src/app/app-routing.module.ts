@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { HomeComponent } from './features/home/home.component';
 import { NewsComponent } from './features/news/news.component';
 import { TeamsComponent } from './features/teams/teams.component';
@@ -12,10 +11,10 @@ import { ContactComponent } from './features/contact/contact.component';
 import { LoginComponent } from './features/login/login.component';
 import { RegisterComponent } from './features/register/register.component';
 
-
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },  // redirige la raíz a login
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
   { path: 'news', component: NewsComponent },
   { path: 'teams', component: TeamsComponent },
@@ -23,14 +22,13 @@ const routes: Routes = [
   { path: 'results', component: ResultsComponent },
   { path: 'classifications', component: ClasificationsComponent },
   { path: 'referees', component: RefereeComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'register', component: RegisterComponent },
-
+  { path: 'contact', component: ContactComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
+
 
