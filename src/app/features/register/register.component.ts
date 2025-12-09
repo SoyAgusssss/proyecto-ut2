@@ -9,6 +9,7 @@ interface NuevoUsuario {
   password: string;
   rol: 'usuario' | 'admin' | 'capitan' | 'arbitro';
   equipo?: string;
+  deporte: string;  // 👈 ahora obligatorio
 }
 
 @Component({
@@ -17,27 +18,38 @@ interface NuevoUsuario {
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+
+  // Datos del usuario nuevo
   nuevoUsuario: NuevoUsuario = {
     usuario: '',
     email: '',
     password: '',
     rol: 'usuario',
-    equipo: ''
+    equipo: '',
+    deporte: ''    // 👈 necesario para el desplegable de deportes
   };
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   registrar(form: NgForm) {
-    if (!form.valid) return alert('Completa todos los campos');
+    if (!form.valid) {
+      return alert('Completa todos los campos');
+    }
 
     this.authService.registrar(this.nuevoUsuario).subscribe({
       next: () => {
         alert('Usuario registrado');
         this.router.navigate(['/login']);
       },
-      error: (err: any) => alert(err.error?.mensaje || 'Error registro')
+      error: (err: any) => {
+        alert(err.error?.mensaje || 'Error registro');
+      }
     });
   }
 }
+
 
 

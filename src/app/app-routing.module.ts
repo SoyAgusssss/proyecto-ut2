@@ -22,7 +22,9 @@ const routes: Routes = [
   { path: 'results', component: ResultsComponent },
   { path: 'classifications', component: ClasificationsComponent },
   { path: 'referees', component: RefereeComponent },
-  { path: 'contact', component: ContactComponent }
+  { path: 'contact', component: ContactComponent },
+  { path: 'referee', component: RefereeComponent }
+
 ];
 
 @NgModule({

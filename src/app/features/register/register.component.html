@@ -14,6 +14,18 @@
     </div>
 
     <div class="mb-3">
+      <label for="deporte" class="form-label">Deporte</label>
+      <select id="deporte" class="form-select" name="deporte" [(ngModel)]="nuevoUsuario.deporte" required>
+        <option value="" disabled selected>Selecciona un deporte</option>
+        <option value="Fútbol">Fútbol</option>
+        <option value="Baloncesto">Baloncesto</option>
+        <option value="Tenis">Tenis</option>
+        <option value="Voleibol">Voleibol</option>
+      </select>
+    </div>
+
+
+    <div class="mb-3">
       <label for="password" class="form-label">Contraseña</label>
       <input type="password" id="password" class="form-control" name="password" [(ngModel)]="nuevoUsuario.password" required>
     </div>

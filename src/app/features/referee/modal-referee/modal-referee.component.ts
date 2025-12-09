@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-modal-referee',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalRefereeComponent implements OnInit {
 
+  @Input() arbitros: any[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
 }
+

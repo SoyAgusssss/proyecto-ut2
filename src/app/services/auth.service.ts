@@ -22,6 +22,10 @@ export class AuthService {
   registrar(usuario: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/register`, usuario);
   }
+
+  getPorRol(rol: string): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/rol/${rol}`);
+}
 }
 
 

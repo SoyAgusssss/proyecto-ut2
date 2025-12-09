@@ -1,33 +1,38 @@
-import { Component } from '@angular/core';
-
-interface Arbitro {
-  nombre: string;
-  deporte: string;
-  descripcion: string;
-  modalId: string;
-}
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-referee',
   templateUrl: './referee.component.html',
   styleUrls: ['./referee.component.scss']
 })
-export class RefereeComponent {
+export class RefereeComponent implements OnInit {
 
-  // Texto del buscador
-  buscador: string = '';
+  buscador = '';
+  arbitros: any[] = [];
 
-  // Lista de árbitros
-  arbitros: Arbitro[] = [
-    { nombre: 'Leo Messi', deporte: 'Fútbol', descripcion: 'Experiencia: 3 años', modalId: 'modalArbitro1' },
-    { nombre: 'Paul Gasol', deporte: 'Baloncesto', descripcion: 'Partidos arbitrados: 12', modalId: 'modalArbitro2' }
-  ];
+  constructor(private authService: AuthService) {}
 
-  // Getter filtrado dinámico
-  get arbitrosFiltrados() {
-    const texto = this.buscador.toLowerCase();
-    return this.arbitros.filter(a => a.nombre.toLowerCase().includes(texto));
+  ngOnInit() {
+    this.authService.getPorRol('arbitro').subscribe({
+      next: (data: any[]) => {
+        // Generamos un modalId único para cada árbitro
+        this.arbitros = data.map(a => ({
+          ...a,
+          modalId: `modalArbitro_${a._id}`
+        }));
+      },
+      error: () => alert('Error cargando árbitros')
+    });
   }
 
+  get arbitrosFiltrados() {
+    const t = this.buscador.toLowerCase();
+    return this.arbitros.filter(a =>
+      a.usuario && a.usuario.toLowerCase().includes(t)
+    );
+  }
 }
+
+
 

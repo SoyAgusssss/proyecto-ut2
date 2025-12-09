@@ -1,80 +1,35 @@
-  <!-- Modal Jugador 1 -->
-  <div class="modal fade" id="modalJugador1" tabindex="-1" aria-labelledby="modalJugador1Label" aria-hidden="true">
+<!-- Generar un modal por jugador -->
+<div *ngFor="let jugador of jugadores">
+
+  <div class="modal fade"
+       [id]="jugador.modalId"
+       tabindex="-1"
+       aria-hidden="true">
+
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
+
         <div class="modal-header text-white">
-          <h5 class="modal-title" id="modalJugador1Label">Ana Torres</h5>
+          <h5 class="modal-title">{{ jugador.usuario }}</h5>
           <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
+
         <div class="modal-body">
-          <strong>Equipo:</strong> Los Maestres<br>
-          <strong>Posición:</strong> Delantera<br>
-          <strong>Goles:</strong> 7<br>
-          <strong>Contacto:</strong> ana@torres
+          <strong>Deporte:</strong> {{ jugador.deporte }} <br>
+          <strong>Equipo:</strong> {{ jugador.equipo || 'Sin equipo' }} <br>
+          <strong>Email:</strong> {{ jugador.email }}
         </div>
+
         <div class="modal-footer">
-          <button class="btn btn-outline-primary btn-animado" data-bs-dismiss="modal">Cerrar</button>
+          <button class="btn btn-outline-primary btn-animado" data-bs-dismiss="modal">
+            Cerrar
+          </button>
         </div>
+
       </div>
     </div>
+
   </div>
-  <!-- Modal Jugador 2 -->
-  <div class="modal fade" id="modalJugador2" tabindex="-1" aria-labelledby="modalJugador2Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header text-white">
-          <h5 class="modal-title" id="modalJugador2Label">Mario López</h5>
-          <button class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <strong>Equipo:</strong> Balomaestre<br>
-          <strong>Posición:</strong> Base<br>
-          <strong>Puntos:</strong> 15<br>
-          <strong>Correo:</strong> mario@lopez
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-outline-primary btn-animado" data-bs-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal Jugador 3 -->
-  <div class="modal fade" id="modalJugador3" tabindex="-1" aria-labelledby="modalJugador3Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header text-white">
-          <h5 class="modal-title" id="modalJugador3Label">Paco Pozo</h5>
-          <button class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <strong>Equipo:</strong> Los raquetas<br>
-          <strong>Posición:</strong> Derecho<br>
-          <strong>Puntos:</strong> 10<br>
-          <strong>Correo:</strong> paco@pozo
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-outline-primary btn-animado" data-bs-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Modal Jugador 4 -->
-  <div class="modal fade" id="modalJugador4" tabindex="-1" aria-labelledby="modalJugador4Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header text-white">
-          <h5 class="modal-title" id="modalJugador4Label">Paco Pozo</h5>
-          <button class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <strong>Equipo:</strong> VoleiMaestre<br>
-          <strong>Posición:</strong> Defensa<br>
-          <strong>Puntos:</strong> 14<br>
-          <strong>Correo:</strong> pedro@picapiedra
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-outline-primary btn-animado" data-bs-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
+</div>
+
