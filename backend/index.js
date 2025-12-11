@@ -13,6 +13,7 @@ app.use(express.json());
 // Rutas
 app.use('/api/auth', require('./routes/usuarios'));
 app.use('/api/matches', require('./routes/matchs'));
+app.use('/api/teams', require('./routes/teams'));
 
 // MongoDB
 mongoose.connect(process.env.MONGO_URI)

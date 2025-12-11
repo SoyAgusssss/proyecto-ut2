@@ -19,7 +19,6 @@ router.post('/register', async (req, res) => {
       email,
       rol: rol || "usuario",
       equipo: equipo || '',
-      deporte: deporte || ''   // <-- AÑADIDO
     });
 
     await nuevoUsuario.save();

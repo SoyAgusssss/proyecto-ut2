@@ -26,6 +26,9 @@ export class AuthService {
   getPorRol(rol: string): Observable<any> {
   return this.http.get<any>(`${this.apiUrl}/rol/${rol}`);
 }
+  getUsuariosPorEquipo(equipoNombre: string) {
+  return this.getPorRol('usuario');
+}
 }
 
 

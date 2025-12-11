@@ -1,45 +1,68 @@
-import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TeamService, Team } from '../../services/team.service';
 
 @Component({
   selector: 'app-teams',
   templateUrl: './teams.component.html',
   styleUrls: ['./teams.component.scss']
 })
-export class TeamsComponent implements AfterViewInit {
+export class TeamsComponent implements OnInit {
 
-  @ViewChild('filtradoEquipos') filtro!: ElementRef;
-  @ViewChild('busquedaEquipo') busqueda!: ElementRef;
-  @ViewChild('listadoEquipos') listado!: ElementRef;
+  nuevoEquipo: Team = { nombre: '', deporte: '' };
+  equipos: Team[] = [];
+  equiposFiltrados: Team[] = [];
 
-  constructor() { }
+  filtroCompeticion = 'todos';
+  textoBusqueda = '';
 
-  ngAfterViewInit(): void {
-    const cards = this.listado.nativeElement.querySelectorAll('.equipo-card');
+  constructor(private teamService: TeamService) {}
 
-    const filtrarEquipos = () => {
-      const comp = this.filtro.nativeElement.value;
-      const texto = this.busqueda.nativeElement.value.toLowerCase();
+  ngOnInit(): void {
+    this.cargarEquipos();
+  }
 
-      cards.forEach((card: HTMLElement) => {
-        // Obtener equipo
-        const nombre = card.querySelector('.card-title')!.textContent!.toLowerCase();
+  cargarEquipos() {
+    this.teamService.getTeams().subscribe(data => {
+      this.equipos = data;
+      this.aplicarFiltros();
+    });
+  }
 
-        // Comparar competición
-        const esComp = comp === "todos" || (card.dataset['competicion'] || '') === comp;
+  crearEquipo() {
+    if (!this.nuevoEquipo.nombre || !this.nuevoEquipo.deporte) {
+      return alert('Completa todos los campos');
+    }
 
-        // Comparar nombre
-        const coincide = nombre.indexOf(texto) > -1;
-        
-        card.style.display = (esComp && coincide) ? "" : "none";
-      });
-    };
+    this.teamService.createTeam(this.nuevoEquipo).subscribe({
+      next: () => {
+        alert('Equipo creado');
+        this.cargarEquipos();
+        this.nuevoEquipo = { nombre: '', deporte: '' };
+      },
+      error: () => alert('Error creando equipo')
+    });
+  }
 
-    // Ejecutar la primera vez para inicializar
-    filtrarEquipos();
+  aplicarFiltros() {
+    this.equiposFiltrados = this.equipos.filter(eq => {
+      const coincideCompeticion =
+        this.filtroCompeticion === 'todos' ||
+        eq.deporte.toLowerCase() === this.filtroCompeticion;
 
-    // Añadir eventos
-    this.filtro.nativeElement.addEventListener('change', filtrarEquipos);
-    this.busqueda.nativeElement.addEventListener('input', filtrarEquipos);
+      const coincideTexto =
+        eq.nombre.toLowerCase().includes(this.textoBusqueda.toLowerCase());
+
+      return coincideCompeticion && coincideTexto;
+    });
+  }
+
+  onFiltroChange() {
+    this.aplicarFiltros();
+  }
+
+  onBusquedaChange() {
+    this.aplicarFiltros();
   }
 }
+
 

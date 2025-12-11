@@ -14,32 +14,30 @@
     </div>
 
     <div class="mb-3">
-      <label for="deporte" class="form-label">Deporte</label>
-      <select id="deporte" class="form-select" name="deporte" [(ngModel)]="nuevoUsuario.deporte" required>
-        <option value="" disabled selected>Selecciona un deporte</option>
-        <option value="Fútbol">Fútbol</option>
-        <option value="Baloncesto">Baloncesto</option>
-        <option value="Tenis">Tenis</option>
-        <option value="Voleibol">Voleibol</option>
+      <label for="rol" class="form-label">Rol</label>
+      <select id="rol" class="form-select" name="rol" [(ngModel)]="nuevoUsuario.rol" required>
+        <option value="usuario">Usuario</option>
+        <option value="capitan">Capitán</option>
+        <option value="arbitro">Árbitro</option>
       </select>
     </div>
 
+    <!-- Equipo solo para usuarios o capitanes -->
+    <div class="mb-3" *ngIf="nuevoUsuario.rol !== 'arbitro'">
+      <label for="equipo" class="form-label">Equipo</label>
+      <select id="equipo" class="form-select" name="equipo" [(ngModel)]="nuevoUsuario.equipo">
+        <option value="" disabled selected>Selecciona un equipo</option>
+        <option *ngFor="let eq of equipos" [value]="eq.nombre">{{ eq.nombre }} ({{ eq.deporte }})</option>
+      </select>
+    </div>
 
     <div class="mb-3">
       <label for="password" class="form-label">Contraseña</label>
       <input type="password" id="password" class="form-control" name="password" [(ngModel)]="nuevoUsuario.password" required>
     </div>
 
-    <div class="mb-3">
-      <label for="rol" class="form-label">Rol</label>
-      <select id="rol" class="form-select" name="rol" [(ngModel)]="nuevoUsuario.rol" required>
-        <option value="usuario">Usuario</option>
-        <option value="admin">Admin</option>
-        <option value="capitan">Capitán</option>
-        <option value="arbitro">Árbitro</option>
-      </select>
-    </div>
-
     <button type="submit" class="btn btn-success w-100">Registrarse</button>
   </form>
 </section>
+
+
