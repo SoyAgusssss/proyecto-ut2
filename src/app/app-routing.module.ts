@@ -12,6 +12,8 @@ import { LoginComponent } from './features/login/login.component';
 import { RegisterComponent } from './features/register/register.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
@@ -21,8 +23,9 @@ const routes: Routes = [
   { path: 'results', component: ResultsComponent },
   { path: 'classifications', component: ClasificationsComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'referee', component: RefereeComponent }
+  { path: 'referee', component: RefereeComponent },
 
+  { path: '**', redirectTo: '/home' }
 ];
 
 @NgModule({
@@ -30,5 +33,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+
 
 

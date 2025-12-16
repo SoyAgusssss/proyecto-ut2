@@ -22,6 +22,9 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.get('/', (req, res) => res.send('Servidor backend funcionando'));
 
-app.listen(PORT, () => console.log(`Servidor escuchando en http://localhost:${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en puerto ${PORT}`);
+});
+
 
 
