@@ -21,10 +21,8 @@ export class NewsComponent implements AfterViewInit {
       contadorEl.textContent = `(Noticia ${idx + 1} de ${slides.length})`;
     };
 
-    // Inicializamos el contador en la primera diapositiva
     updateCounter(0);
 
-    // Evento de Bootstrap al cambiar de diapositiva
     carouselEl.addEventListener('slid.bs.carousel', (event: any) => {
       updateCounter(event.to);
     });

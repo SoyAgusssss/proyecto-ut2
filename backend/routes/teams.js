@@ -17,7 +17,6 @@ router.post('/', async (req, res) => {
   try {
     const { nombre, deporte, capitan } = req.body;
 
-    // Aquí puedes añadir validación de rol: solo admin
     const nuevoTeam = new Team({ nombre, deporte, capitan });
     await nuevoTeam.save();
 

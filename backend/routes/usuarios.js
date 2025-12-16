@@ -61,7 +61,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// 🔥 NUEVO → Obtener por rol
+// Obtener por rol
 router.get('/rol/:rol', async (req, res) => {
   try {
     const rol = req.params.rol;

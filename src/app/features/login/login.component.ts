@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -25,10 +25,8 @@ export class LoginComponent {
           this.cargando = false;
           if (!res.usuario) return alert('Usuario no encontrado');
 
-          // Guardar en localStorage
           localStorage.setItem('usuarioActual', JSON.stringify(res.usuario));
 
-          // Redirección según rol
           switch (res.usuario.rol) {
             case 'admin': this.router.navigate(['/home']); break;
             case 'capitan':

@@ -6,7 +6,7 @@ const matchSchema = new mongoose.Schema({
   equipo2: { type: String, required: true },
   goles1: { type: Number, default: 0 },
   goles2: { type: Number, default: 0 },
-  puntos1: { type: Number, default: 0 }, // para deportes de puntos
+  puntos1: { type: Number, default: 0 },
   puntos2: { type: Number, default: 0 },
   fecha: { type: Date, required: true },
   arbitro: { type: String, required: true },

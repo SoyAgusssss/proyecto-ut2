@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-referee',
@@ -16,7 +16,6 @@ export class RefereeComponent implements OnInit {
   ngOnInit() {
     this.authService.getPorRol('arbitro').subscribe({
       next: (data: any[]) => {
-        // Generamos un modalId único para cada árbitro
         this.arbitros = data.map(a => ({
           ...a,
           modalId: `modalArbitro_${a._id}`

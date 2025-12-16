@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { TeamService, Team } from '../../services/team.service';
+import { AuthService } from '../../core/auth.service';
+import { TeamService, Team } from '../../core/team.service';
 
 interface NuevoUsuario {
   usuario: string;
@@ -10,7 +10,7 @@ interface NuevoUsuario {
   password: string;
   rol: 'usuario' | 'capitan' | 'arbitro';
   equipo?: string;
-  deporte?: string; // ya opcional, se asigna según el equipo
+  deporte?: string;
 }
 
 @Component({
@@ -47,7 +47,6 @@ export class RegisterComponent implements OnInit {
   registrar(form: NgForm) {
     if (!form.valid) return alert('Completa todos los campos');
 
-    // Si el usuario elige un equipo, asignamos su deporte automáticamente
     if (this.nuevoUsuario.equipo) {
       const equipoSeleccionado = this.equipos.find(eq => eq.nombre === this.nuevoUsuario.equipo);
       if (equipoSeleccionado) {
@@ -55,7 +54,6 @@ export class RegisterComponent implements OnInit {
       }
     }
 
-    // Si es árbitro, no asignamos equipo ni deporte
     if (this.nuevoUsuario.rol === 'arbitro') {
       this.nuevoUsuario.equipo = '';
       this.nuevoUsuario.deporte = '';

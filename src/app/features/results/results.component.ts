@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatchesService, Match } from '../../services/match.service';
+import { MatchesService, Match } from '../../core/match.service';
 
 interface UsuarioActual {
   usuario: string;

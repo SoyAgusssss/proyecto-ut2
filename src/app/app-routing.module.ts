@@ -12,7 +12,6 @@ import { LoginComponent } from './features/login/login.component';
 import { RegisterComponent } from './features/register/register.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent },
@@ -21,7 +20,6 @@ const routes: Routes = [
   { path: 'players', component: PlayersComponent },
   { path: 'results', component: ResultsComponent },
   { path: 'classifications', component: ClasificationsComponent },
-  { path: 'referees', component: RefereeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'referee', component: RefereeComponent }
 
