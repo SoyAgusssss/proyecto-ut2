@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface Team {
   _id?: string;
@@ -13,8 +14,7 @@ export interface Team {
   providedIn: 'root'
 })
 export class TeamService {
-
-  private apiUrl = 'http://localhost:3000/api/teams';
+  private apiUrl = `${environment.apiUrl}/teams`;
 
   constructor(private http: HttpClient) {}
 
@@ -26,4 +26,5 @@ export class TeamService {
     return this.http.post(this.apiUrl, team);
   }
 }
+
 

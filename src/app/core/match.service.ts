@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface Match {
   _id?: string;
@@ -20,7 +21,7 @@ export interface Match {
   providedIn: 'root'
 })
 export class MatchesService {
-  private apiUrl = 'http://localhost:3000/api/matches';
+  private apiUrl = `${environment.apiUrl}/matches`;
 
   constructor(private http: HttpClient) {}
 
@@ -36,4 +37,5 @@ export class MatchesService {
     return this.http.put<Match>(`${this.apiUrl}/${id}`, data);
   }
 }
+
 
