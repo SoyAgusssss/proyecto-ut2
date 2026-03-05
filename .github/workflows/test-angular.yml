@@ -13,7 +13,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: Proyecto_UT2
+        working-directory: .
 
     steps:
       - name: Checkout
@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: 18
           cache: npm
-          cache-dependency-path: Proyecto_UT2/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: angular-coverage
-          path: Proyecto_UT2/coverage
+          path: coverage
 
   cypress-e2e:
     name: Cypress E2E
@@ -46,7 +46,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: Proyecto_UT2
+        working-directory: .
 
     steps:
       - name: Checkout
@@ -57,7 +57,7 @@ jobs:
         with:
           node-version: 18
           cache: npm
-          cache-dependency-path: Proyecto_UT2/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -65,7 +65,7 @@ jobs:
       - name: Run Cypress E2E
         uses: cypress-io/github-action@v6
         with:
-          working-directory: Proyecto_UT2
+          working-directory: .
           start: npm start
           wait-on: 'http://localhost:4200'
           wait-on-timeout: 120
@@ -78,5 +78,5 @@ jobs:
         with:
           name: cypress-artifacts
           path: |
-            Proyecto_UT2/cypress/screenshots
-            Proyecto_UT2/cypress/videos
+            cypress/screenshots
+            cypress/videos
