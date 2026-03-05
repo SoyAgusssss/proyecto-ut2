@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { TeamsComponent } from './teams.component';
 
@@ -8,7 +11,9 @@ describe('TeamsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TeamsComponent ]
+      declarations: [ TeamsComponent ],
+      imports: [HttpClientTestingModule, FormsModule],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });
