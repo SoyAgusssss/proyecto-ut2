@@ -76,21 +76,20 @@ jobs:
       - name: Install backend dependencies
         run: npm ci --prefix backend
 
-      - name: Start backend API
-        run: node backend/index.js &
-        env:
-          MONGO_URI: mongodb://127.0.0.1:27017/proyecto_ut2_ci
-          PORT: 3000
-
       - name: Run Cypress E2E
         uses: cypress-io/github-action@v6
         with:
           working-directory: .
-          start: npm start
+          start: |
+            npm run start -- --host 0.0.0.0 --port 4200
+            node backend/index.js
           wait-on: 'http://localhost:4200, http://localhost:3000'
-          wait-on-timeout: 120
+          wait-on-timeout: 180
           browser: chrome
           spec: cypress/e2e/**/*.cy.ts
+        env:
+          MONGO_URI: mongodb://127.0.0.1:27017/proyecto_ut2_ci
+          PORT: 3000
 
       - name: Upload Cypress artifacts
         if: always()
