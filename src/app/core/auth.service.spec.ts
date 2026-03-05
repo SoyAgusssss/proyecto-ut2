@@ -2,6 +2,8 @@ import { TestBed } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
 
+const jExpect = <T>(actual: T) => expect(actual) as unknown as jasmine.Matchers<T>;
+
 describe('AuthService', () => {
   let service: AuthService;
 
@@ -11,6 +13,6 @@ describe('AuthService', () => {
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    jExpect(service).toBeTruthy();
   });
 });

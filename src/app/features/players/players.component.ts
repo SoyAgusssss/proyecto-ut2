@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../core/auth.service';
+import { Player, PlayerService } from '../../core/player.service';
 
-interface Jugador {
+interface Jugador extends Player {
   _id: string;
-  usuario: string;
-  deporte: string;
-  equipo: string;
   modalId?: string;
 }
 
@@ -19,12 +16,14 @@ export class PlayersComponent implements OnInit {
   buscador = '';
   jugadores: Jugador[] = [];
 
-  constructor(private authService: AuthService) {}
+  constructor(private playerService: PlayerService) {}
 
   ngOnInit() {
-    this.authService.getPorRol('usuario').subscribe({
-      next: (data: Jugador[]) => {
-        this.jugadores = data.map((j: Jugador) => ({
+    this.playerService.getPlayers().subscribe({
+      next: (data: Player[]) => {
+        this.jugadores = data
+        .filter((j): j is Jugador => !!j._id)
+        .map((j: Jugador) => ({
           ...j,
           modalId: `modalJugador_${j._id}`
         }));

@@ -14,6 +14,7 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/usuarios'));
 app.use('/api/matches', require('./routes/matchs'));
 app.use('/api/teams', require('./routes/teams'));
+app.use('/api/players', require('./routes/players'));
 
 // MongoDB
 mongoose.connect(process.env.MONGO_URI)
